@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="0.096" timestamp="2025-07-11T14:49:59.110168+09:00" hostname="surface-shiori"><testcase classname="tests.test_data_file" name="test_json_files_exist" time="0.002" /><testcase classname="tests.test_data_file" name="test_json_readable[json_file0]" time="0.001" /><testcase classname="tests.test_data_file" name="test_json_readable[json_file1]" time="0.001" /><testcase classname="tests.test_data_file" name="test_json_readable[json_file2]" time="0.002" /><testcase classname="tests.test_data_file" name="test_validate_json_schema[get_book_json_files-required_keys0-book]" time="0.001" /><testcase classname="tests.test_data_file" name="test_validate_json_schema[get_user_json_files-required_keys1-user]" time="0.001"><failure message="AssertionError: [user] Missing key 'last_name' in C:\Users\ns69a\winprojects\library-lesson\sample\users\u_list_01.json&#10;assert 'last_name' in {'first_name': '翔', 'history': [], 'id': 'U030', 'last_nama': '内田'}">get_files_func = &lt;function get_user_json_files at 0x000002735C0A6D40&gt;
+required_keys = {'first_name': &lt;class 'str'&gt;, 'history': &lt;class 'list'&gt;, 'id': &lt;class 'str'&gt;, 'last_name': &lt;class 'str'&gt;}, label = 'user'
+
+    @pytest.mark.parametrize(
+        "get_files_func, required_keys, label",
+        [
+            (get_book_json_files, BOOK_REQUIRED_KEYS, "book"),
+            (get_user_json_files, USER_REQUIRED_KEYS, "user"),
+        ],
+    )
+    def test_validate_json_schema(
+        get_files_func: Callable[[], list[Path]], required_keys: dict[str, type], label: str
+    ) -&gt; None:
+        for json_file in get_files_func():
+            with open(json_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+            for obj in data:
+                for key, expected_type in required_keys.items():
+&gt;                   assert key in obj, f"[{label}] Missing key '{key}' in {json_file}"
+E                   AssertionError: [user] Missing key 'last_name' in C:\Users\ns69a\winprojects\library-lesson\sample\users\u_list_01.json
+E                   assert 'last_name' in {'first_name': '翔', 'history': [], 'id': 'U030', 'last_nama': '内田'}
+
+tests\test_data_file.py:57: AssertionError</failure></testcase></testsuite></testsuites>

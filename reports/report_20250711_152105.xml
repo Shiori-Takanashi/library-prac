@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="3" skipped="0" tests="9" time="0.121" timestamp="2025-07-11T15:21:06.085156+09:00" hostname="surface-shiori"><testcase classname="tests.test_data_file" name="test_json_files_exist" time="0.002" /><testcase classname="tests.test_data_file" name="test_json_readable[json_file0]" time="0.001" /><testcase classname="tests.test_data_file" name="test_json_readable[json_file1]" time="0.001" /><testcase classname="tests.test_data_file" name="test_json_readable[json_file2]" time="0.001" /><testcase classname="tests.test_data_file" name="test_validate_json_schema[get_book_json_files-required_keys0-book]" time="0.002" /><testcase classname="tests.test_data_file" name="test_validate_json_schema[get_user_json_files-required_keys1-user]" time="0.001" /><testcase classname="tests.test_data_file" name="test_duplicate_value[json_file0]" time="0.001"><failure message="AttributeError: 'list' object has no attribute 'keys'">json_file = WindowsPath('C:/Users/ns69a/winprojects/library-lesson/sample/books/list_01.json')
+
+    @pytest.mark.parametrize("json_file", get_book_json_files() + get_user_json_files())
+    def test_duplicate_value(json_file: Path) -&gt; None:
+        with open(json_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+&gt;       existing_keys = set(data.keys())
+                            ^^^^^^^^^
+E       AttributeError: 'list' object has no attribute 'keys'
+
+tests\test_data_file.py:68: AttributeError</failure></testcase><testcase classname="tests.test_data_file" name="test_duplicate_value[json_file1]" time="0.001"><failure message="AttributeError: 'list' object has no attribute 'keys'">json_file = WindowsPath('C:/Users/ns69a/winprojects/library-lesson/sample/books/list_02.json')
+
+    @pytest.mark.parametrize("json_file", get_book_json_files() + get_user_json_files())
+    def test_duplicate_value(json_file: Path) -&gt; None:
+        with open(json_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+&gt;       existing_keys = set(data.keys())
+                            ^^^^^^^^^
+E       AttributeError: 'list' object has no attribute 'keys'
+
+tests\test_data_file.py:68: AttributeError</failure></testcase><testcase classname="tests.test_data_file" name="test_duplicate_value[json_file2]" time="0.001"><failure message="AttributeError: 'list' object has no attribute 'keys'">json_file = WindowsPath('C:/Users/ns69a/winprojects/library-lesson/sample/users/u_list_01.json')
+
+    @pytest.mark.parametrize("json_file", get_book_json_files() + get_user_json_files())
+    def test_duplicate_value(json_file: Path) -&gt; None:
+        with open(json_file, "r", encoding="utf-8") as f:
+            data = json.load(f)
+&gt;       existing_keys = set(data.keys())
+                            ^^^^^^^^^
+E       AttributeError: 'list' object has no attribute 'keys'
+
+tests\test_data_file.py:68: AttributeError</failure></testcase></testsuite></testsuites>

@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "pytest --report",
+			"type": "shell",
+			"command": "pytest --junitxml=reports/report_$(Get-Date -Format yyyyMMdd_HHmmss).xml -v",
+			"options": {
+				"shell": {
+					"executable": "pwsh.exe",
+					"args": [
+						"-NoProfile",
+						"-Command"
+					]
+				}
+			},
+			"group": "test",
+			"isBackground": false
+		}
+	]
+}

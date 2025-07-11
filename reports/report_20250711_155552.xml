@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="3" time="0.096" timestamp="2025-07-11T15:55:53.345851+09:00" hostname="surface-shiori"><testcase classname="tests.test_data_file" name="test_json_files_exist" time="0.002" /><testcase classname="tests.test_data_file" name="test_no_duplicates_across_files[get_book_json_files-keys_to_check0-book]" time="0.010"><failure message="Failed: [book] Duplicate 'title' value '鼻' found in both C:\Users\ns69a\winprojects\library-lesson\sample\books\list_01.json and C:\Users\ns69a\winprojects\library-lesson\sample\books\list_02.json">get_files_func = &lt;function get_book_json_files at 0x000001F798223F60&gt;, keys_to_check = ['title', 'isbn'], label = 'book'
+
+    @pytest.mark.parametrize(
+        "get_files_func, keys_to_check, label",
+        [
+            (get_book_json_files, ["title", "isbn"], "book"),
+            (get_user_json_files, ["id"], "user"),
+        ],
+    )
+    def test_no_duplicates_across_files(
+        get_files_func: Callable[[], list[Path]],
+        keys_to_check: list[str],
+        label: str,
+    ) -&gt; None:
+        """
+        Ensure that selected key values do not appear more than once across all relevant JSON files.
+        """
+        seen: dict[str, dict[Any, Path]] = {key: {} for key in keys_to_check}
+    
+        for json_file in get_files_func():
+            with open(json_file, "r", encoding="utf-8") as f:
+                data = json.load(f)
+    
+            if not isinstance(data, list):
+                pytest.fail(
+                    f"[{label}] Expected list in {json_file}, got {type(data).__name__}"
+                )
+    
+            for entry in data:
+                for key in keys_to_check:
+                    if key not in entry:
+                        pytest.fail(f"[{label}] Missing key '{key}' in {json_file}")
+                    value = entry[key]
+                    if value in seen[key]:
+                        prev_file = seen[key][value]
+&gt;                       pytest.fail(
+                            f"[{label}] Duplicate '{key}' value '{value}' found in both "
+                            f"{prev_file} and {json_file}"
+                        )
+E                       Failed: [book] Duplicate 'title' value '鼻' found in both C:\Users\ns69a\winprojects\library-lesson\sample\books\list_01.json and C:\Users\ns69a\winprojects\library-lesson\sample\books\list_02.json
+
+tests\test_data_file.py:77: Failed</failure></testcase><testcase classname="tests.test_data_file" name="test_no_duplicates_across_files[get_user_json_files-keys_to_check1-user]" time="0.001" /></testsuite></testsuites>
