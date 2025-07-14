@@ -1,13 +1,17 @@
-from pathlib import Path
-from typing import List, Callable
-from schemas import USER_REQUIRED_KEYS, BOOK_REQUIRED_KEYS
 import json
+from pathlib import Path
+from typing import Any, Callable, List
+
 import pytest
 
 ROOT_BOOK_DIR = Path(__file__).parent.parent / "sample" / "books"
 ROOT_USER_DIR = Path(__file__).parent.parent / "sample" / "users"
-MERGED_BOOK_FILE = Path(__file__).parent.parent / "sample" / "merged_books.json"
-MERGED_USER_FILE = Path(__file__).parent.parent / "sample" / "merged_users.json"
+MERGED_BOOK_FILE = (
+    Path(__file__).parent.parent / "resources" / "data" / "all_books.json"
+)
+MERGED_USER_FILE = (
+    Path(__file__).parent.parent / "resources" / "data" / "all_users.json"
+)
 
 
 def get_json_files(root_dir: Path) -> List[Path]:

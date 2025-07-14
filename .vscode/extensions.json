@@ -1,0 +1,24 @@
+{
+    // プロジェクト推奨拡張機能
+    "recommendations": [
+        "ms-python.python", // Pythonサポート本体（必須）
+        "ms-python.black-formatter", // コード整形（black）
+        "ms-python.isort", // import順整形（isort）
+        "charliermarsh.ruff", // 高速Linter（ruff、flake8/pylint代替）
+        "ms-python.vscode-pylance" // 補完・型推論強化（pyrightベース）
+    ],
+    "unwantedRecommendations": [
+        ////// 不要な拡張機能　//////
+        "ms-python.pylint", // ruffと重複。導入不要
+        "ms-python.flake8", // 同上。ruffに統一すべき
+        "ms-python.autopep8", // blackと競合。選ぶ必要なし
+        "donjayamanne.python-extension-pack", // 冗長。個別に導入すべき
+        ////// 個人の拡張機能　//////
+        "github.copilot",
+        "github.copilot-chat",
+        "hipstersmoothie-public.github-dark-high-contrast",
+        "ms-ceintl.vscode-language-pack-ja",
+        "ms-vscode.powershell",
+        "pkief.material-icon-theme"
+    ]
+}
