@@ -1,13 +1,7 @@
 from pathlib import Path
 from typing import List
 
-IGNORE_DIRS = [".venv", ".git", ".pytest_cache", "__pycache__"]
-
-
-from pathlib import Path
-from typing import List
-
-IGNORE_DIRS = [".venv", ".git", ".pytest_cache", "__pycache__"]
+IGNORE_DIRS = [".venv", ".git", ".pytest_cache", "__pycache__", ".mypy_cache"]
 
 
 def get_all_children(root_dir: Path) -> List[Path]:
@@ -36,6 +30,8 @@ def get_all_children(root_dir: Path) -> List[Path]:
 
 def write_all_children(outpath: Path, children: List) -> None:
     with open(outpath, "w", encoding="utf-8") as f:
+        f.write("# This file is named tree.txt.\n# It was made by tree.py-script.\n\n")
+        f.write("# Files #\n")
         for item in children:
             f.write(f"{item}\n")
         f.write("\n# ignore dirs #\n")
