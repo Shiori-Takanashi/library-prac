@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="3" skipped="0" tests="11" time="0.168" timestamp="2025-07-14T14:38:20.820793+09:00" hostname="surface-shiori"><testcase classname="tests.test_book" name="test_lend_and_return" time="0.001" /><testcase classname="tests.test_data_file" name="test_json_files_exist" time="0.001"><failure message="AssertionError: Merged book JSON file not found: C:\Users\ns69a\winprojects\library-lesson\sample\merged_books.json&#10;assert ([WindowsPath('C:/Users/ns69a/winprojects/library-lesson/sample/merged_books.json')] and False)&#10; +  where False = exists()&#10; +    where exists = WindowsPath('C:/Users/ns69a/winprojects/library-lesson/sample/merged_books.json').exists">def test_json_files_exist() -&gt; None:
+        book_files = get_book_json_files()
+        user_files = get_user_json_files()
+&gt;       assert (
+            book_files and MERGED_BOOK_FILE.exists()
+        ), f"Merged book JSON file not found: {MERGED_BOOK_FILE}"
+E       AssertionError: Merged book JSON file not found: C:\Users\ns69a\winprojects\library-lesson\sample\merged_books.json
+E       assert ([WindowsPath('C:/Users/ns69a/winprojects/library-lesson/sample/merged_books.json')] and False)
+E        +  where False = exists()
+E        +    where exists = WindowsPath('C:/Users/ns69a/winprojects/library-lesson/sample/merged_books.json').exists
+
+tests\test_data_file.py:28: AssertionError</failure></testcase><testcase classname="tests.test_data_file" name="test_no_duplicates_in_merged_file[get_book_json_files-keys_to_check0-book]" time="0.001"><failure message="FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ns69a\\winprojects\\library-lesson\\sample\\merged_books.json'">get_files_func = &lt;function get_book_json_files at 0x000002120F7DA160&gt;, keys_to_check = ['title', 'isbn']
+label = 'book'
+
+    @pytest.mark.parametrize(
+        "get_files_func, keys_to_check, label",
+        [
+            (get_book_json_files, ["title", "isbn"], "book"),
+            (get_user_json_files, ["id"], "user"),
+        ],
+    )
+    def test_no_duplicates_in_merged_file(
+        get_files_func: Callable[[], list[Path]],
+        keys_to_check: list[str],
+        label: str,
+    ) -&gt; None:
+        """
+        Ensure that selected key values do not appear more than once within the merged JSON file.
+        """
+        seen: dict[str, dict[Any, Path]] = {key: {} for key in keys_to_check}
+    
+        for json_file in get_files_func():
+&gt;           with open(json_file, "r", encoding="utf-8") as f:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ns69a\\winprojects\\library-lesson\\sample\\merged_books.json'
+
+tests\test_data_file.py:68: FileNotFoundError</failure></testcase><testcase classname="tests.test_data_file" name="test_no_duplicates_in_merged_file[get_user_json_files-keys_to_check1-user]" time="0.001"><failure message="FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ns69a\\winprojects\\library-lesson\\sample\\merged_users.json'">get_files_func = &lt;function get_user_json_files at 0x000002120F8C4040&gt;, keys_to_check = ['id'], label = 'user'
+
+    @pytest.mark.parametrize(
+        "get_files_func, keys_to_check, label",
+        [
+            (get_book_json_files, ["title", "isbn"], "book"),
+            (get_user_json_files, ["id"], "user"),
+        ],
+    )
+    def test_no_duplicates_in_merged_file(
+        get_files_func: Callable[[], list[Path]],
+        keys_to_check: list[str],
+        label: str,
+    ) -&gt; None:
+        """
+        Ensure that selected key values do not appear more than once within the merged JSON file.
+        """
+        seen: dict[str, dict[Any, Path]] = {key: {} for key in keys_to_check}
+    
+        for json_file in get_files_func():
+&gt;           with open(json_file, "r", encoding="utf-8") as f:
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\ns69a\\winprojects\\library-lesson\\sample\\merged_users.json'
+
+tests\test_data_file.py:68: FileNotFoundError</failure></testcase><testcase classname="tests.test_library" name="test_register_book_and_user" time="0.001"><error message="failed on setup with &quot;file C:\Users\ns69a\winprojects\library-lesson\tests\test_library.py, line 6&#10;  def test_register_book_and_user(sample_book, sample_user) -&gt; None:&#10;E       fixture 'sample_book' not found&#10;&gt;       available fixtures: cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory&#10;&gt;       use 'pytest --fixtures [testpath]' for help on them.&#10;&#10;C:\Users\ns69a\winprojects\library-lesson\tests\test_library.py:6&quot;">file C:\Users\ns69a\winprojects\library-lesson\tests\test_library.py, line 6
+  def test_register_book_and_user(sample_book, sample_user) -&gt; None:
+E       fixture 'sample_book' not found
+&gt;       available fixtures: cache, capfd, capfdbinary, caplog, capsys, capsysbinary, capteesys, doctest_namespace, monkeypatch, pytestconfig, record_property, record_testsuite_property, record_xml_attribute, recwarn, tmp_path, tmp_path_factory, tmpdir, tmpdir_factory
+&gt;       use 'pytest --fixtures [testpath]' for help on them.
+
+C:\Users\ns69a\winprojects\library-lesson\tests\test_library.py:6</error></testcase><testcase classname="tests.test_loader_factory" name="test_load_entities" time="0.016" /><testcase classname="tests.test_loader_factory" name="test_make_book_and_register" time="0.001" /><testcase classname="tests.test_loader_factory" name="test_make_user_and_register" time="0.001" /><testcase classname="tests.test_presenter" name="test_transform_info" time="0.000" /><testcase classname="tests.test_presenter" name="test_show_info_stdout" time="0.001" /><testcase classname="tests.test_user" name="test_borrow_and_return_history" time="0.000" /></testsuite></testsuites>
