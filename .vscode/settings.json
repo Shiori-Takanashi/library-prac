@@ -1,0 +1,64 @@
+{
+  // Pythonインタープリタ（仮想環境）
+  "python.defaultInterpreterPath": ".venv\\Scripts\\python.exe",
+  // Pythonファイルに対するエディタ設定
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
+  // Black拡張の引数設定（行長 = 88）
+  "black-formatter.args": [
+    "--line-length",
+    "88"
+  ],
+  // 必要なら環境内のバイナリを使う指定（bundledより優先）
+  "black-formatter.importStrategy": "fromEnvironment",
+  // isort拡張をBlack互換モードで使用
+  "isort.args": [
+    "--profile=black"
+  ],
+  // Ruff拡張の設定（新形式）
+  "ruff.interpreter": [
+    ".venv\\Scripts\\python.exe"
+  ],
+  "ruff.lint.enable": true,
+  "ruff.importStrategy": "fromEnvironment",
+  // Mypy Type Checker拡張の設定
+  "mypy-type-checker.importStrategy": "fromEnvironment",
+  "mypy-type-checker.interpreter": [
+    ".venv\\Scripts\\python.exe"
+  ],
+  "mypy-type-checker.args": [
+    "--check-untyped-defs"
+  ],
+  // Pylance設定（型補完・解析強化）
+  "python.languageServer": "Pylance",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.autoSearchPaths": true,
+  "python.analysis.useLibraryCodeForTypes": true,
+  // === VS Code ワークスペース設定 ===
+  // アイコンテーマ設定
+  "workbench.iconTheme": "material-icon-theme",
+  "material-icon-theme.folders.associations": {
+    "users": "admin",
+    "books": "bibliography",
+    "core": "core",
+    "data": "database",
+    "schemas": "class",
+    "tests": "test",
+    "tools": "tools",
+    "reports": "archive",
+    "sample": "examples",
+    "docs": "docs",
+    "debug": "debug"
+  },
+  "material-icon-theme.folders.theme": "specific",
+  "material-icon-theme.files.associations": {
+    "*.json": "json",
+    "*.py": "python",
+    "*.md": "markdown"
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "timestamp": "2025-07-15T07:11:53.163284",
+  "repository_path": "C:\\Users\\ns69a\\winprojects\\library-lesson",
+  "current_branch": "vscode/setting-pre",
+  "remote_url": "git@github.com:Shiori-Takanashi/library-prac.git",
+  "latest_commit": {
+    "hash": "97b9642bc6ac831f676b67baf15d556de8a27dee",
+    "message": "git-infoスクリプト作成",
+    "author": "Takanashi-Shiori",
+    "date": "2025-07-15 07:07:29 +0900"
+  },
+  "recent_commits": [
+    {
+      "hash": "97b9642",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-15",
+      "message": "07:07:29 +0900 git-infoスクリプト作成"
+    },
+    {
+      "hash": "4c47a20",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-15",
+      "message": "06:28:39 +0900 yml変更"
+    },
+    {
+      "hash": "1bfd90a",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-15",
+      "message": "06:24:48 +0900 coreクラスを作成"
+    },
+    {
+      "hash": "5e49314",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-13",
+      "message": "05:22:56 +0900 テスト成功例2"
+    },
+    {
+      "hash": "0ed9a5f",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-12",
+      "message": "13:44:55 +0900 テスト成功例"
+    },
+    {
+      "hash": "95b3b2e",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-11",
+      "message": "18:20:51 +0900 requirements.txtのリネーム:テスト失敗の確認3"
+    },
+    {
+      "hash": "958de98",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-11",
+      "message": "18:03:32 +0900 requirements.txtのリネーム:テスト失敗の確認2"
+    },
+    {
+      "hash": "9c55c10",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-11",
+      "message": "17:59:04 +0900 _requirements.txt:テスト失敗の確認"
+    },
+    {
+      "hash": "21f9bbd",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-11",
+      "message": "17:56:55 +0900 ci/cd構成を作成させた"
+    },
+    {
+      "hash": "51dee34",
+      "author": "Takanashi-Shiori",
+      "date": "2025-07-11",
+      "message": "16:11:55 +0900 poc-v1"
+    }
+  ],
+  "status": {
+    "staged": [
+      "ut/current_repo_info.json"
+    ],
+    "modified": [
+      "scripts/tools/__pycache__/repo_info.cpython-312.pyc",
+      "scripts/tools/repo_info.py"
+    ],
+    "untracked": [],
+    "is_clean": false
+  },
+  "diff_summary": {
+    "files_changed": 3,
+    "insertions": 48,
+    "deletions": 173,
+    "files": [
+      {
+        "path": "out/current_repo_info.json",
+        "summary": "185 ++-------------------"
+      },
+      {
+        "path": ".../tools/__pycache__/repo_info.cpython-312.pyc",
+        "summary": "Bin 6708 -> 7914 bytes"
+      },
+      {
+        "path": "scripts/tools/repo_info.py",
+        "summary": "36 +++-"
+      }
+    ]
+  },
+  "local_branches": [
+    "master",
+    "prac/cicd",
+    "vscode/setting",
+    "vscode/setting-pre"
+  ],
+  "remote_branches": [
+    "origin/master",
+    "origin/prac/cicd",
+    "origin/vscode/setting-pre"
+  ],
+  "tags": [],
+  "hooks_enabled": []
+}

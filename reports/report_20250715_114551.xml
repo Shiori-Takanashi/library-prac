@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites name="pytest tests"><testsuite name="pytest" errors="1" failures="0" skipped="0" tests="1" time="0.201" timestamp="2025-07-15T11:45:51.948220+09:00" hostname="surface-shiori"><testcase classname="" name="tests.test_loader_factory" time="0.000"><error message="collection failure">ImportError while importing test module 'C:\Users\ns69a\winprojects\library-lesson\tests\test_loader_factory.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\AppData\Local\Programs\Python\Python312\Lib\importlib\__init__.py:90: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_loader_factory.py:7: in &lt;module&gt;
+    from core.infra.factory import make_book_instance, make_user_inctance, register_entities
+E   ImportError: cannot import name 'make_user_inctance' from 'core.infra.factory' (C:\Users\ns69a\winprojects\library-lesson\core\infra\factory.py)</error></testcase></testsuite></testsuites>

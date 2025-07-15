@@ -2,9 +2,9 @@ name: Python CI
 
 on:
   push:
-    branches: [ prac/cicd ]
+    branches: [ vscode/setting-pre ]
   pull_request:
-    branches: [ main ]
+    branches: [ vscode/setting ]
 
 jobs:
   build:
