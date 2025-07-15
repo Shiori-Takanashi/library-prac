@@ -21,27 +21,23 @@ from cmd import Cmd
 from core.domain.book import Book
 from core.domain.library import Library
 from core.domain.user import User
-from core.infra.factory import make_book_instance, make_user_instance, register_entities
-from core.infra.loader import load_book_entities, load_user_entities
-
-# Libraryオブジェクト作成
-lib = Library()
-
-# ——— 初期データのロード(init_library.py と同等) ———
-register_entities(load_book_entities(), lib.books, make_book_instance)
-register_entities(load_user_entities(), lib.users, make_user_instance)
+from utils.init_library import initialize_library
 
 
 class LibraryREPL(Cmd):
     intro = "図書館 REPL へようこそ。help でコマンド一覧を表示します。"
     prompt = "(library) "
 
+    def __init__(self, lib: Library) -> None:
+        super().__init__()
+        self.lib = lib
+
     # ---------- 基本コマンド ---------- #
     def do_addbook(self, arg: str) -> None:
         """addbook "<title>" "<author>" <isbn> <total>"""
         try:
             title, author, isbn, total = shlex.split(arg)
-            lib.register_book(Book(title, author, isbn, int(total)))
+            self.lib.register_book(Book(title, author, isbn, int(total)))
             print(f"登録完了: {title} ({isbn})")
         except ValueError:
             print('使い方: addbook "<title>" "<author>" <isbn> <total>')
@@ -50,7 +46,7 @@ class LibraryREPL(Cmd):
         """adduser <user_id> "<name>\" """
         try:
             user_id, name = shlex.split(arg)
-            lib.register_user(User(user_id, name, []))
+            self.lib.register_user(User(user_id, name, []))
             print(f"利用者登録完了: {name} ({user_id})")
         except ValueError:
             print('使い方: adduser <user_id> "<name>"')
@@ -59,7 +55,7 @@ class LibraryREPL(Cmd):
         """lend <user_id> <isbn>"""
         try:
             user_id, isbn = arg.split()
-            lib.lend_book(user_id, isbn)
+            self.lib.lend_book(user_id, isbn)
             print(f"貸出完了: {isbn} → {user_id}")
         except Exception as e:
             print(e)
@@ -68,7 +64,7 @@ class LibraryREPL(Cmd):
         """return <user_id> <isbn>"""
         try:
             user_id, isbn = arg.split()
-            lib.return_book(user_id, isbn)
+            self.lib.return_book(user_id, isbn)
             print(f"返却完了: {isbn} ← {user_id}")
         except Exception as e:
             print(e)
@@ -76,10 +72,10 @@ class LibraryREPL(Cmd):
     def do_list(self, arg: str) -> None:
         """list books|users"""
         if arg.strip() == "books":
-            for b in lib.list_books().values():
+            for b in self.lib.list_books().values():
                 print(b.stock_status())
         elif arg.strip() == "users":
-            for u in lib.users.values():
+            for u in self.lib.users.values():
                 print(f"{u.user_id}: {u.name}")
         else:
             print("使い方: list books もしくは list users")
@@ -88,7 +84,7 @@ class LibraryREPL(Cmd):
         """history <user_id>"""
         user_id = arg.strip()
         try:
-            for line in lib.get_user_history(user_id):
+            for line in self.lib.get_user_history(user_id):
                 print(line)
         except Exception as e:
             print(e)
@@ -116,4 +112,5 @@ class LibraryREPL(Cmd):
 
 
 if __name__ == "__main__":
-    LibraryREPL().cmdloop()
+    lib = initialize_library()
+    LibraryREPL(lib).cmdloop()
