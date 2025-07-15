@@ -18,7 +18,7 @@ from pathlib import Path
 # ==== 設定定数 ====
 
 REPO_PATH = Path.cwd()  # 実行時の作業ディレクトリ（プロジェクトルートでの -m 実行前提）
-OUTPUT_PATH = REPO_PATH / "out" / "current_repo_info.json"
+OUTPUT_PATH = REPO_PATH / "out" / "repo_info.json"
 TEMPLATE_PATH = None  # 例: Path("tools/repo_base/template_repo_info.json") にテンプレを置く想定（未使用）
 
 
@@ -102,6 +102,36 @@ def parse_hooks(hook_dir: Path) -> list[str]:
     ]
 
 
+def parse_diff_summary(output: str | None) -> dict:
+    if not output:
+        return {"files_changed": 0, "insertions": 0, "deletions": 0, "files": []}
+
+    lines = output.strip().splitlines()
+    files = []
+    insertions = deletions = 0
+
+    for line in lines:
+        if "changed" in line and ("insertions" in line or "deletions" in line):
+            # 最終行（全体統計）から集計
+            if "insertions" in line:
+                insertions = int(line.split("insertions")[0].split()[-1])
+            if "deletions" in line:
+                deletions = int(line.split("deletions")[0].split()[-1])
+            files_changed = int(line.split("file")[0].strip().split()[-1])
+        else:
+            parts = line.strip().split("|", 1)
+            if len(parts) == 2:
+                path, summary = parts
+                files.append({"path": path.strip(), "summary": summary.strip()})
+
+    return {
+        "files_changed": files_changed if files else 0,
+        "insertions": insertions,
+        "deletions": deletions,
+        "files": files,
+    }
+
+
 # ==== リポジトリ情報の収集 ====
 
 
@@ -122,13 +152,13 @@ def get_repo_info() -> dict:
             git(["log", "-10", "--pretty=format:%h %an %ad %s", "--date=iso"])
         ),
         "status": parse_status(git(["status", "--porcelain"])),
-        "diff_summary": git(["diff", "--stat"]),
-        "tracked_files": parse_lines(git(["ls-files"])),
+        "diff_summary": parse_diff_summary(git(["diff", "--stat"])),
+        # "tracked_files": parse_lines(git(["ls-files"])),
         "local_branches": parse_lines(git(["branch"])),
         "remote_branches": parse_lines(git(["branch", "-r"]), skip_head=True),
         "tags": parse_lines(git(["tag"])),
         "hooks_enabled": parse_hooks(REPO_PATH / ".git" / "hooks"),
-        "git_config": parse_lines(git(["config", "--list"])),
+        # "git_config": parse_lines(git(["config", "--list"])),
     }
 
 

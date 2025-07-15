@@ -4,16 +4,25 @@ from typing import Any, Dict, List
 
 from core.domain.book import Book
 from core.domain.user import User
-from core.infra.factory import make_book_instance, make_user_inctance, register_entities
-from core.infra.loader import load_entities
+from core.infra.factory import make_book_instance, make_user_instance, register_entities
+from core.infra.loader import load_book_entities, load_user_entities
 
 
-def test_load_entities(tmp_path: Path) -> None:
+def test_book_load_entities(tmp_path: Path) -> None:
     data = [{"foo": "bar"}]
     f = tmp_path / "data.json"
     f.write_text(json.dumps(data), "utf-8")
 
-    result: List[dict] = load_entities(f)
+    result: List[dict] = load_book_entities(f)
+    assert result == data
+
+
+def test_user_load_entities(tmp_path: Path) -> None:
+    data = [{"foo": "bar"}]
+    f = tmp_path / "data.json"
+    f.write_text(json.dumps(data), "utf-8")
+
+    result: List[dict] = load_user_entities(f)
     assert result == data
 
 
@@ -35,10 +44,10 @@ def test_make_user_and_register() -> None:
         "first_name": "太郎",
         "history": [],
     }
-    user = make_user_inctance(entry)
+    user = make_user_instance(entry)
     assert isinstance(user, User)
     assert user.name == "山田 太郎"
 
     registry: dict[str, User] = {}
-    register_entities([entry], registry, make_user_inctance)
+    register_entities([entry], registry, make_user_instance)
     assert registry["u1"].user_id == "u1"

@@ -17,9 +17,14 @@ C:\Users\ns69a\winprojects\library-lesson\core\domain\__init__.py
 C:\Users\ns69a\winprojects\library-lesson\core\infra\factory.py
 C:\Users\ns69a\winprojects\library-lesson\core\infra\loader.py
 C:\Users\ns69a\winprojects\library-lesson\core\presenter\presenter.py
+C:\Users\ns69a\winprojects\library-lesson\debug\init_library.py
+C:\Users\ns69a\winprojects\library-lesson\debug\repl.py
+C:\Users\ns69a\winprojects\library-lesson\debug\__init__.py
 C:\Users\ns69a\winprojects\library-lesson\docs\challenge.md
 C:\Users\ns69a\winprojects\library-lesson\docs\cicd.md
+C:\Users\ns69a\winprojects\library-lesson\docs\repo_info.md
 C:\Users\ns69a\winprojects\library-lesson\mypy.ini
+C:\Users\ns69a\winprojects\library-lesson\out\repo_info.json
 C:\Users\ns69a\winprojects\library-lesson\out\tree.txt
 C:\Users\ns69a\winprojects\library-lesson\README.md
 C:\Users\ns69a\winprojects\library-lesson\reports\report_20250711_144934.xml
@@ -40,6 +45,9 @@ C:\Users\ns69a\winprojects\library-lesson\reports\report_20250714_144200.xml
 C:\Users\ns69a\winprojects\library-lesson\reports\report_20250714_145511.xml
 C:\Users\ns69a\winprojects\library-lesson\reports\report_20250714_145707.xml
 C:\Users\ns69a\winprojects\library-lesson\reports\report_20250715_063517.xml
+C:\Users\ns69a\winprojects\library-lesson\reports\report_20250715_114551.xml
+C:\Users\ns69a\winprojects\library-lesson\reports\report_20250715_115011.xml
+C:\Users\ns69a\winprojects\library-lesson\reports\report_20250715_115246.xml
 C:\Users\ns69a\winprojects\library-lesson\requirements-dev.txt
 C:\Users\ns69a\winprojects\library-lesson\requirements.txt
 C:\Users\ns69a\winprojects\library-lesson\resources\data\all_books.json
@@ -47,11 +55,7 @@ C:\Users\ns69a\winprojects\library-lesson\resources\data\all_users.json
 C:\Users\ns69a\winprojects\library-lesson\resources\schemas\book_schema.py
 C:\Users\ns69a\winprojects\library-lesson\resources\schemas\user_schema.py
 C:\Users\ns69a\winprojects\library-lesson\resources\schemas\__init__.py
-C:\Users\ns69a\winprojects\library-lesson\scripts\debug\operation.py
-C:\Users\ns69a\winprojects\library-lesson\scripts\debug\__init__.py
-C:\Users\ns69a\winprojects\library-lesson\scripts\tools\prepare_data.py
-C:\Users\ns69a\winprojects\library-lesson\scripts\tools\tree.py
-C:\Users\ns69a\winprojects\library-lesson\scripts\tools\__init__.py
+C:\Users\ns69a\winprojects\library-lesson\scripts\tools\repo_info.py
 C:\Users\ns69a\winprojects\library-lesson\tests\conftest.py
 C:\Users\ns69a\winprojects\library-lesson\tests\test_book.py
 C:\Users\ns69a\winprojects\library-lesson\tests\test_data_file.py
@@ -60,6 +64,10 @@ C:\Users\ns69a\winprojects\library-lesson\tests\test_loader_factory.py
 C:\Users\ns69a\winprojects\library-lesson\tests\test_presenter.py
 C:\Users\ns69a\winprojects\library-lesson\tests\test_user.py
 C:\Users\ns69a\winprojects\library-lesson\tests\__init__.py
+C:\Users\ns69a\winprojects\library-lesson\tools\prepare_data.py
+C:\Users\ns69a\winprojects\library-lesson\tools\repo_info.py
+C:\Users\ns69a\winprojects\library-lesson\tools\tree.py
+C:\Users\ns69a\winprojects\library-lesson\tools\__init__.py
 
 # ignore dirs #
 .venv

@@ -1,6 +1,7 @@
+# const/config.py
+
 from pathlib import Path
 
 root_dir = Path(__file__).parent.parent
-SAMPLE_DIR = root_dir / "sample"
-BOOKS_JSON = SAMPLE_DIR / "all_books.json"
-USERS_JSON = SAMPLE_DIR / "all_users.json"
+ALL_BOOK_JSON = root_dir / "resources" / "data" / "all_books.json"
+ALL_USER_JSON = root_dir / "resources" / "data" / "all_users.json"

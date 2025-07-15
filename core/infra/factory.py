@@ -1,4 +1,6 @@
-from typing import Any, Callable, Dict, List, TypeVar, Union
+# core/infra/factory.py
+
+from typing import Any, Callable, Dict, List, TypeVar
 
 from core.domain.book import Book
 from core.domain.user import User
@@ -15,7 +17,7 @@ def make_book_instance(entry: Dict[str, Any]) -> Book:
     )
 
 
-def make_user_inctance(entry: Dict[str, Any]) -> User:
+def make_user_instance(entry: Dict[str, Any]) -> User:
     return User(
         user_id=entry["id"],
         name=f"{entry['last_name']} {entry['first_name']}",
@@ -25,9 +27,17 @@ def make_user_inctance(entry: Dict[str, Any]) -> User:
 
 def register_entities(
     info: List[Dict[str, Any]],
-    registry: Dict,
-    factory: Callable[[Dict[str, Any]], Union[Book, User]],
+    registry: Dict[str, T],
+    factory: Callable[[Dict[str, Any]], T],
 ) -> None:
+    """
+    Book または User のリストを登録辞書に一括登録する。
+
+    Parameters:
+        info: JSON等から読み込んだ辞書のリスト
+        registry: 登録先の辞書（isbnやuser_idをキーとする）
+        factory: Book か User を生成する関数
+    """
     for entry in info:
         instance = factory(entry)
         if isinstance(instance, Book):
