@@ -2,9 +2,9 @@ name: Python CI
 
 on:
   push:
-    branches: [ vscode/setting-pre ]
+    branches: [ wslver ]
   pull_request:
-    branches: [ vscode/setting ]
+    branches: [ master ]
 
 jobs:
   build:
