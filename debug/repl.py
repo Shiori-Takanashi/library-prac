@@ -21,7 +21,7 @@ from cmd import Cmd
 from core.domain.book import Book
 from core.domain.library import Library
 from core.domain.user import User
-from utils.init_library import initialize_library
+from scripts.init_library import initialize_library
 
 
 class LibraryREPL(Cmd):

@@ -1,6 +1,6 @@
 {
   // Pythonインタープリタ（仮想環境）
-  "python.defaultInterpreterPath": ".venv\\bin\\python.exe",
+  "python.defaultInterpreterPath": ".venv/bin/python",
   // Pythonファイルに対するエディタ設定
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter",
@@ -22,14 +22,14 @@
   ],
   // Ruff拡張の設定（新形式）
   "ruff.interpreter": [
-    ".venv\\bin\\python.exe"
+    ".venv/bin/python"
   ],
   "ruff.lint.enable": true,
   "ruff.importStrategy": "fromEnvironment",
   // Mypy Type Checker拡張の設定
   "mypy-type-checker.importStrategy": "fromEnvironment",
   "mypy-type-checker.interpreter": [
-    ".venv\\bin\\python.exe"
+    ".venv/bin/python"
   ],
   "mypy-type-checker.args": [
     "--check-untyped-defs"

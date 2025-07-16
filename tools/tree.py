@@ -39,7 +39,7 @@ def write_all_children(outpath: Path, children: List) -> None:
 
 
 if __name__ == "__main__":
-    rootpath = Path(r"C:\Users\ns69a\winprojects\library-lesson")
+    rootpath = Path(__file__).parent.parent
     outdir = rootpath / "out"
     outdir.mkdir(exist_ok=True)
     outfile = outdir / "tree.txt"
